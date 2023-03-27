@@ -1,0 +1,30 @@
+.card-header {
+    text-align: center
+   }
+.container{
+    margin-top: 5em;
+    width: 70%;
+}
+.links_shift{
+    margin-left: 0.5em;
+}
+.password{
+    margin:0.5em;
+}
+.login{
+    text-align: center;
+    /* margin: 0.5em 0; */
+}
+.card{
+    background-color: #eee;
+}
+.btn{
+    background-color: #aaa;
+    border-radius: 1em;
+    width: 10em;
+    margin: 0.5em 0;
+}
+.navbar-brand{
+    margin: 0 auto;
+    font-size: 2em;
+}
