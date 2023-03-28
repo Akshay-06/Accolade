@@ -74,7 +74,14 @@ def dashboard():
         return redirect('/')
 
 
+@app.route('/forgotpassword')
+def forgotpassword():
+    return render_template('forgotpassword.html')
 
+
+@app.route('/register')
+def register():
+    return render_template('register.html')
 
 # Set up logout route
 @app.route('/logout')
@@ -86,3 +93,4 @@ def logout():
 
 if __name__ == '__main__':
   app.run(debug=True)
+
