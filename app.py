@@ -71,3 +71,35 @@ def dashboard():
 
 if __name__ == '__main__':
     app.run()
+
+
+
+
+# app.py for the login pages
+
+#     from flask import Flask, render_template, url_for, redirect
+
+# app = Flask(__name__)
+
+# @app.route('/')
+# def index():
+#     return redirect('/login')
+
+# @app.route('/register')
+# def register():
+#     return render_template('register.html')
+
+# @app.route('/login')
+# def login():
+#     return render_template('login.html')
+
+# @app.route('/forgotpassword')
+# def forgotpassword():
+#     return render_template('forgotpassword.html')
+
+# @app.route('/dashboard')
+# def dashboard():
+#     return render_template('dashboard.html')
+
+
+# app.run(debug=True)
