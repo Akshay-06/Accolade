@@ -4,8 +4,6 @@ from flask_session import Session
 from controllers.DBController import connectToDB
 import os
 
-#template_dir = os.path.dirname(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
-#template_dir = os.path.join(template_dir, 'Accolade/application/views/templates')
 app = Flask(__name__,static_url_path='', template_folder='views/templates', static_folder='views/static')
 
 
