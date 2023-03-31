@@ -97,14 +97,11 @@ def register():
 def navigateToRegisterPage():
     return render_template('register.html')
 
-
-# Set up dashboard route
-@app.route('/dashboard')
-def dashboard():
+def storeUserInPage(toPage):
     if 'username' in session and session['logged_in']:
         # Retrieve user data from session
         username = session['username']
-        response = make_response(render_template('dashboard.html', username=username))
+        response = make_response(render_template(toPage, username=username))
         response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
         response.headers['Pragma'] = 'no-cache'
         response.headers['Expires'] = '0'
@@ -112,6 +109,12 @@ def dashboard():
     else:
         # User is not logged in, redirect to login page
         return redirect('/')
+
+
+# Set up dashboard route
+@app.route('/dashboard')
+def dashboard():
+    return storeUserInPage('dashboard.html')
 
 
 @app.route('/forgotpassword')
