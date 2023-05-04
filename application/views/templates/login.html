@@ -34,20 +34,48 @@
                     </div>
                 </div>
             </div>
+
+            <div class="form-group">
+              <label for="password">Password</label>
+              <div class="input-group">
+                <input type="password" class="form-control" id="password" name="password" required>
+                <span class="input-group-append">
+                  <button class="show_icon" type="button" id="show-password-toggle">
+                    <i class="fas fa-eye"></i>
+                  </button>
+                </span>
+              </div>
+            </div>
+            {% if error %}
+            <p style="color: red;">{{ error }}</p>
+            {% endif %}
+            <div><span><input type="checkbox"> Remember me</span><span style="float:right"><a
+                  href="/forgotpassword">Forgot password</a></span></div>
+            <div class="login">
+              <button type="submit" class="btn btn-primary">Login</button><br>Not a Member? <a
+                href="/registerpage">Signup Now</a></br>
+            </div>
+          </form>
         </div>
-        <br> 
-        <script>
-            var passwordInput = document.getElementById("password");
-            var toggleButton = document.getElementById("show-password-toggle");
-          
-            toggleButton.addEventListener("click", function() {
-              if (passwordInput.type === "password") {
-                passwordInput.type = "text";
-                toggleButton.innerHTML = '<i class="fas fa-eye-slash"></i>';
-              } else {
-                passwordInput.type = "password";
-                toggleButton.innerHTML = '<i class="fas fa-eye"></i>';
-              }
-            });
-          </script>
+      </div>
+    </div>
+  </div>
+  <br>
+ </div>
+  <br> 
+  <script>
+      var passwordInput = document.getElementById("password");
+      var toggleButton = document.getElementById("show-password-toggle");
+
+      toggleButton.addEventListener("click", function() {
+        if (passwordInput.type === "password") {
+          passwordInput.type = "text";
+          toggleButton.innerHTML = '<i class="fas fa-eye-slash"></i>';
+        } else {
+          passwordInput.type = "password";
+          toggleButton.innerHTML = '<i class="fas fa-eye"></i>';
+        }
+      });
+    </script>
 {%endblock%}
+

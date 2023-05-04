@@ -33,15 +33,25 @@
                             </button>
                           </span>
                         </div>
+                        {% if error %}
+                        <p style="color: rgb(115, 193, 115);">{{ error }}</p>
+                        {% endif %}
+                        <button type="submit" class="btn btn-primary">Register</button>
+                        <a class="links_shift" href="/">Already Registered?</a>
+                    </form>
+                </div>
                       </div>
                     <button type="submit" class="btn btn-primary">Register</button>
                     <a class="links_shift" href="/">Already Registered?</a>
                 </form>
+
             </div>
         </div>
     </div>
 </div>
+
 </div>
+
 <script>
     var passwordInput = document.getElementById("password");
     var toggleButton = document.getElementById("show-password-toggle");
