@@ -1,7 +1,8 @@
 from datetime import datetime
-from flask import Flask, render_template, request, redirect, session, make_response
+from flask import Flask, render_template, request, redirect, session, make_response,url_for
 from flask_session import Session
 from controllers.DBController import connectToDB
+from controllers.StackController import main
 import os
 
 app = Flask(__name__,static_url_path='', template_folder='views/templates', static_folder='views/static')
@@ -43,7 +44,9 @@ def login():
         # Store user data in session
         session['username'] = username
         session['logged_in'] = True
-        return redirect('/dashboard')
+        rewardpoints = main()
+        print(rewardpoints)
+        return redirect(url_for('dashboard',points = rewardpoints))
     else:
         return render_template('login.html',error='Invalid login credentials')
 
@@ -97,11 +100,12 @@ def register():
 def navigateToRegisterPage():
     return render_template('register.html')
 
-def storeUserInPage(toPage):
+def storeUserInPage(toPage,points):
     if 'username' in session and session['logged_in']:
         # Retrieve user data from session
+        
         username = session['username']
-        response = make_response(render_template(toPage, username=username))
+        response = make_response(render_template(toPage, username=username,points = points))
         response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
         response.headers['Pragma'] = 'no-cache'
         response.headers['Expires'] = '0'
@@ -112,9 +116,11 @@ def storeUserInPage(toPage):
 
 
 # Set up dashboard route
-@app.route('/dashboard')
-def dashboard():
-    return storeUserInPage('dashboard.html')
+@app.route('/dashboard/<points>')
+def dashboard(points):
+    #rewardpoints = request.args.get('points')
+    print(points)
+    return storeUserInPage('dashboard.html',points = points)
 
 
 @app.route('/forgotpassword')
