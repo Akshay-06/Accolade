@@ -137,6 +137,11 @@ def logout():
     return redirect('/')
 
 
+@app.route('/rewards')
+def rewards():
+    return render_template('rewards.html')
+
+
 if __name__ == '__main__':
   app.run(debug=True)
 
