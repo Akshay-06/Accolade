@@ -2,6 +2,9 @@
 
 from dataclasses import dataclass
 from stackapi import StackAPI
+from controllers.DBController import connectToDB
+from flask_session import Session
+from flask import session,redirect,render_template,url_for
 import json
 
  
@@ -43,13 +46,19 @@ def main():
 
     # Future: input user id from database table post user registration
     print("Enter the User ID")
-    userId = input()
+    conn = connectToDB()
+    cursor = conn.cursor()
+    cursor.execute("SELECT stackoverflow_id FROM employee WHERE emp_email=%s", (session['username'],))
 
+    stackId = cursor.fetchone()
+    cursor.close()
+    conn.close()
+    userId = stackId[0]
     user = fetchUserData(userId)
     reward_points = calculateRewardPoints(user)
-
-    # Future: update database table column with the reward points
-    print(reward_points)
+    #print(reward_points)
+    #return render_template('/dashboard',reward_points)()
+    return reward_points
 
 if __name__ == "__main__":
     main()
