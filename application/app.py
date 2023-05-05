@@ -100,7 +100,7 @@ def register():
 def navigateToRegisterPage():
     return render_template('register.html')
 
-def storeUserInPage(toPage):
+def storeUserInPageAndRedirect(toPage):
     if 'username' in session and session['logged_in']:
         # Retrieve user data from session
         
@@ -118,9 +118,13 @@ def storeUserInPage(toPage):
 # Set up dashboard route
 @app.route('/dashboard')
 def dashboard():
+<<<<<<< Updated upstream
     #rewardpoints = request.args.get('points')
     print('User Reward Points '+str(rewardpoints))
     return storeUserInPage('dashboard.html')
+=======
+    return storeUserInPageAndRedirect('dashboard.html')
+>>>>>>> Stashed changes
 
 
 @app.route('/forgotpassword')
