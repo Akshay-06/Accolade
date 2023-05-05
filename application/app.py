@@ -138,12 +138,12 @@ def logout():
 
 @app.route('/rewards')
 def rewards():
-    return storeUserInPage('rewards.html')
+    return storeUserInPageAndRedirect('rewards.html')
 
 
 @app.route('/profile')
 def profile():
-    return storeUserInPage('profile.html')
+    return storeUserInPageAndRedirect('profile.html')
 
 if __name__ == '__main__':
   app.run(debug=True)
