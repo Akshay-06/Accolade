@@ -6,7 +6,7 @@ from controllers.StackController import main
 import os
 
 app = Flask(__name__,static_url_path='', template_folder='views/templates', static_folder='views/static')
-
+rewardpoints = 0
 
 
 # Set up Flask-Session
@@ -20,7 +20,7 @@ Session(app)
 
 # Create user authentication function
 def authenticate_user(username, password):
-    
+
     # Set up PostgreSQL connection
     conn = connectToDB()
     cursor = conn.cursor()
@@ -99,10 +99,10 @@ def register():
 def navigateToRegisterPage():
     return render_template('register.html')
 
-def storeUserInPage(toPage):
+
+def storeUserInPageAndRedirect(toPage):
     if 'username' in session and session['logged_in']:
-        # Retrieve user data from session
-        
+        # Retrieve user data from session        
         username = session['username']
         response = make_response(render_template(toPage, username=username))
         response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
@@ -117,7 +117,9 @@ def storeUserInPage(toPage):
 # Set up dashboard route
 @app.route('/dashboard')
 def dashboard():
-    return storeUserInPage('dashboard.html')
+    return storeUserInPageAndRedirect('dashboard.html')
+
+
 
 
 @app.route('/forgotpassword')
@@ -136,12 +138,12 @@ def logout():
 
 @app.route('/rewards')
 def rewards():
-    return render_template('rewards.html')
+    return storeUserInPageAndRedirect('rewards.html')
 
 
 @app.route('/profile')
 def profile():
-    return render_template('profile.html')
+    return storeUserInPageAndRedirect('profile.html')
 
 if __name__ == '__main__':
   app.run(debug=True)
