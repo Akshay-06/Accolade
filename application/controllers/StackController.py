@@ -41,7 +41,7 @@ def fetchUserData():
         if (answer['is_accepted']):
             answers_accepted += 1
     total_answers = len(response['items'])
-    answers_rejected = total_answers - answers_accepted;
+    answers_rejected = total_answers - answers_accepted
     # Future: Add these parameters to the database table for analytics dashboard
     user = User(user_id,reputation,total_answers,answers_accepted,answers_rejected,total_answer_score)
     reward_points = calculateRewardPoints(user)
