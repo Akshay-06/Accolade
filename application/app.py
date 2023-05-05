@@ -6,7 +6,7 @@ from controllers.StackController import main
 import os
 
 app = Flask(__name__,static_url_path='', template_folder='views/templates', static_folder='views/static')
-
+rewardpoints = 0
 
 
 # Set up Flask-Session
@@ -20,7 +20,7 @@ Session(app)
 
 # Create user authentication function
 def authenticate_user(username, password):
-    
+
     # Set up PostgreSQL connection
     conn = connectToDB()
     cursor = conn.cursor()
@@ -46,7 +46,7 @@ def login():
         session['logged_in'] = True
         rewardpoints = main()
         print(rewardpoints)
-        return redirect(url_for('dashboard',points = rewardpoints))
+        return redirect(url_for('dashboard'))
     else:
         return render_template('login.html',error='Invalid login credentials')
 
@@ -100,12 +100,12 @@ def register():
 def navigateToRegisterPage():
     return render_template('register.html')
 
-def storeUserInPage(toPage,points):
+def storeUserInPage(toPage):
     if 'username' in session and session['logged_in']:
         # Retrieve user data from session
         
         username = session['username']
-        response = make_response(render_template(toPage, username=username,points = points))
+        response = make_response(render_template(toPage, username=username,points = rewardpoints))
         response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
         response.headers['Pragma'] = 'no-cache'
         response.headers['Expires'] = '0'
@@ -116,11 +116,11 @@ def storeUserInPage(toPage,points):
 
 
 # Set up dashboard route
-@app.route('/dashboard/<points>')
-def dashboard(points):
+@app.route('/dashboard')
+def dashboard():
     #rewardpoints = request.args.get('points')
-    print(points)
-    return storeUserInPage('dashboard.html',points = points)
+    print('User Reward Points '+str(rewardpoints))
+    return storeUserInPage('dashboard.html')
 
 
 @app.route('/forgotpassword')
@@ -139,12 +139,12 @@ def logout():
 
 @app.route('/rewards')
 def rewards():
-    return render_template('rewards.html')
+    return storeUserInPage('rewards.html')
 
 
 @app.route('/profile')
 def profile():
-    return render_template('profile.html')
+    return storeUserInPage('profile.html')
 
 if __name__ == '__main__':
   app.run(debug=True)
