@@ -44,8 +44,7 @@ def login():
         # Store user data in session
         session['username'] = username
         session['logged_in'] = True
-        rewardpoints = main()
-        print(rewardpoints)
+        main()
         return redirect(url_for('dashboard'))
     else:
         return render_template('login.html',error='Invalid login credentials')
@@ -100,12 +99,12 @@ def register():
 def navigateToRegisterPage():
     return render_template('register.html')
 
+
 def storeUserInPageAndRedirect(toPage):
     if 'username' in session and session['logged_in']:
-        # Retrieve user data from session
-        
+        # Retrieve user data from session        
         username = session['username']
-        response = make_response(render_template(toPage, username=username,points = rewardpoints))
+        response = make_response(render_template(toPage, username=username))
         response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
         response.headers['Pragma'] = 'no-cache'
         response.headers['Expires'] = '0'
@@ -118,13 +117,9 @@ def storeUserInPageAndRedirect(toPage):
 # Set up dashboard route
 @app.route('/dashboard')
 def dashboard():
-<<<<<<< Updated upstream
-    #rewardpoints = request.args.get('points')
-    print('User Reward Points '+str(rewardpoints))
-    return storeUserInPage('dashboard.html')
-=======
     return storeUserInPageAndRedirect('dashboard.html')
->>>>>>> Stashed changes
+
+
 
 
 @app.route('/forgotpassword')
