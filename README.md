@@ -56,27 +56,32 @@ Press CTRL+C to quit
  * Restarting with stat
  * Debugger is active!
  * Debugger PIN: 971-903-612
+ 
 ```
 *USE-CASE 1*
-- Upload a video
+- Track the Rewards
 
   Once the system (Server) is up and running...
 
   step 1: Open this link: http://127.0.0.1:5000/ in a browser.
 
   step 2: Click on "signup" and Create a new account.
-
+  
+  <img src="https://github.com/sivakumarreddy07/Accolade/blob/main/images/upload_register.png" width="500" height="300">
+  
   step 3: Now "login" with the credentials, it will take you back to the Dashboard.
 
-![Upload a image](images/upload_register.png)
+  <img src="https://github.com/sivakumarreddy07/Accolade/blob/main/images/upload_login.png" width="500" height="300">
 
 *Expected behaviour:* You can verify the rewards on the dashboard.
 
-![Upload a image](images/upload_dashboard.png)
+<img src="https://github.com/sivakumarreddy07/Accolade/blob/main/images/upload_dashboard.png" width="500" height="300">
 
 ## Project Tracking
 
 We tracked the project progress using KANBAN board and you can find it [here](https://github.com/users/sivakumarreddy07/projects/3) under the "Projects" section of the repository.
+
+The corresponding instructions for Testing our framework are [here][link_reference_8].
 
 ## System requirements
 
@@ -88,8 +93,13 @@ We tracked the project progress using KANBAN board and you can find it [here](ht
 
 Flask - you can find out [here][link_reference_5]
 
-Project Proposal - you can find out [here][link_reference_6] 
+Project Proposal - you can find out [here][link_reference_6]
 
+Final Report - you can find out [here](link_reference_7)
+
+## Contact
+
+If you face any problem while running this code, you can contact us at {sivakumarreddy, akshayreddy, samhithap, yaswanth22}@vt.edu
 
 [link-reference_1]: https://github.com/sivakumarreddy07
 [link-reference_2]: https://github.com/Akshay-06
@@ -97,3 +107,5 @@ Project Proposal - you can find out [here][link_reference_6]
 [link-reference_4]: https://github.com/yaswanth1316
 [link_reference_5]: https://flask.palletsprojects.com/en/2.1.x/
 [link_reference_6]: https://github.com/sivakumarreddy07/Accolade/blob/main/Accolade_Proposal.pdf
+[link_reference_7]: https://github.com/sivakumarreddy07/Accolade/blob/main/Docs/Accolade_Report.pdf
+[link_reference_8]: https://github.com/sivakumarreddy07/Accolade/tree/main/application/tests
