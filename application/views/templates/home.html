@@ -2,9 +2,12 @@
 {%block title%}Dashboard{%endblock%}
 {% include "nav.html" %}
 {%block content%}
-<iframe title="Report Section" width="600" height="373.5"
-  src="https://app.powerbi.com/view?r=eyJrIjoiOTQ1MzBjYWMtYzkzZS00Y2E1LWJkZjItNTEyOGVmMGJlOWIzIiwidCI6IjYwOTU2ODg0LTEwYWQtNDBmYS04NjNkLTRmMzJjMWUzYTM3YSIsImMiOjF9"
-  frameborder="0" allowFullScreen="true"></iframe>
+<div class="main">
+{%include "sidebar.html"%}
+<iframe title="Report Section" src="https://app.powerbi.com/view?r=eyJrIjoiNDNkNWI3YTEtNDQyNi00NWRhLWFlZDgtMGRhNjQ0ZDkxNTk0IiwidCI6IjYwOTU2ODg0LTEwYWQtNDBmYS04NjNkLTRmMzJjMWUzYTM3YSIsImMiOjF9" frameborder="0" allowFullScreen="true"></iframe>
+</div>
+
+
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper-base.min.js"
   integrity="sha256-6cMwccTylKJLvCfzYfhHrLQ0zmkOGWfPmqflB/vm0m0=" crossorigin="anonymous"></script>

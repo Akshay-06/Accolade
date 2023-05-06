@@ -2,12 +2,14 @@ from datetime import datetime
 from flask import Flask, render_template, request, redirect, session, make_response,url_for
 from flask_session import Session
 from controllers.DBController import connectToDB
+from dataclasses import dataclass
 from controllers.StackController import main
 import os
 
 app = Flask(__name__,static_url_path='', template_folder='views/templates', static_folder='views/static')
 rewardpoints = 0
 
+emp_name=''
 
 # Set up Flask-Session
 app.config['SECRET_KEY'] = 'your-secret-key'
@@ -20,11 +22,16 @@ Session(app)
 
 # Create user authentication function
 def authenticate_user(username, password):
-
+    global emp_name
     # Set up PostgreSQL connection
     conn = connectToDB()
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM login_details WHERE emp_email=%s AND emp_pass=%s", (username, password))
+    cursor_2 = conn.cursor()
+    cursor_2.execute("SELECT emp_name FROM employee where emp_email=%s", (username,))
+    name = cursor_2.fetchone()
+    emp_name = name[0]
+    cursor_2.close()
     result = cursor.fetchone()
     cursor.close()
     conn.close()
@@ -41,11 +48,12 @@ def login():
     username = request.form['username']
     password = request.form['password']
     if authenticate_user(username, password):
+        
         # Store user data in session
+        session['name'] = emp_name
         session['username'] = username
         session['logged_in'] = True
-        main()
-        return redirect(url_for('dashboard'))
+        return redirect('/home')
     else:
         return render_template('login.html',error='Invalid login credentials')
 
@@ -104,7 +112,8 @@ def storeUserInPageAndRedirect(toPage):
     if 'username' in session and session['logged_in']:
         # Retrieve user data from session        
         username = session['username']
-        response = make_response(render_template(toPage, username=username))
+        name = session['name']
+        response = make_response(render_template(toPage, username=username, name= name)) #name=name
         response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
         response.headers['Pragma'] = 'no-cache'
         response.headers['Expires'] = '0'
@@ -113,13 +122,10 @@ def storeUserInPageAndRedirect(toPage):
         # User is not logged in, redirect to login page
         return redirect('/')
 
-
-# Set up dashboard route
-@app.route('/dashboard')
-def dashboard():
-    return storeUserInPageAndRedirect('dashboard.html')
-
-
+# Set up home route
+@app.route('/home')
+def home():
+    return storeUserInPageAndRedirect('home.html')
 
 
 @app.route('/forgotpassword')
