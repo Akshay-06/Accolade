@@ -97,7 +97,7 @@ PowerBI - you can find out [here][link_reference_9]
 
 Project Proposal - you can find out [here][link_reference_6]
 
-Final Report - you can find out [here](link_reference_7)
+Final Report - you can find out [here][link_reference_7]
 
 ## Contact
 
@@ -108,7 +108,7 @@ If you face any problem while running this code, you can contact us at {sivakuma
 [link-reference_3]: https://github.com/samhithapentaparthy
 [link-reference_4]: https://github.com/yaswanth1316
 [link_reference_5]: https://flask.palletsprojects.com/en/2.1.x/
-[link_reference_6]: https://github.com/sivakumarreddy07/Accolade/blob/main/Accolade_Proposal.pdf
+[link_reference_6]: https://github.com/sivakumarreddy07/Accolade/blob/main/Docs/Accolade_Proposal.pdf
 [link_reference_7]: https://github.com/sivakumarreddy07/Accolade/blob/main/Docs/Accolade_Report.pdf
 [link_reference_8]: https://github.com/sivakumarreddy07/Accolade/tree/main/application/tests
 [link_reference_9]: https://powerbi.microsoft.com/en-us/learning/
