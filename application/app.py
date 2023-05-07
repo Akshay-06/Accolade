@@ -109,6 +109,11 @@ def navigateToRegisterPage():
     return render_template('register.html')
 
 
+@app.route('/sendRewards')
+def sendRewards():
+    return render_template('rewards.html', error='Form submitted successfully') 
+
+
 def storeUserInPageAndRedirect(toPage):
     if 'username' in session and session['logged_in']:
         # Retrieve user data from session        

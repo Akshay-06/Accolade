@@ -10,17 +10,28 @@
             <div class="card">
                 <!-- <div class="card-header">Login</div> -->
                 <div class="card-body">
-                    <form method="post">
+                    <form method="post" onsubmit="submitForm(event)" id="myForm">
                         <h2>Send your rewards</h2>
-                        <div class="form-group"><input class="form-control" placeholder="Email" type="text" required> </div>
-                        <div class="form-group"><input class="form-control" placeholder="Rewards" type="text" required> </div>
+                        <div class="form-group"><input class="form-control" placeholder="Email" type="email" required> </div>
+                        <div class="form-group"><input class="form-control" placeholder="Manager Email" type="email" required> </div>
+                        <div class="form-group"><input class="form-control" placeholder="Rewards" type="number" required> </div>
                         <div class="form-group"><input class="form-control" placeholder="Note" type="text" required> </div>
-                        <div class="form-group"><input class="form-control" type="file" id="file" name="file" required></div>
-                        <button type="submit" class="btn btn-primary">Upload</button>
-                    </form>   
+                        <div class="form-group"><input class="form-control" type="file" id="file" name="file"></div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                    <div id="success" class="success-message" style="display:none;color: green;">Form submitted successfully!</div>   
                 </div>
             </div>
         </div>
     </div>
+    <script>
+		function submitForm(event) {
+			event.preventDefault(); // Prevent form submission to the server
+			var form = document.getElementById("myForm");
+			form.reset(); // Clear form fields
+			var successMessage = document.getElementById("success");
+			successMessage.style.display = "block"; // Show success message
+		}
+	</script>
 
 {%endblock%} 
