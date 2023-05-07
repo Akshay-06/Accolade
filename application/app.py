@@ -53,6 +53,7 @@ def login():
         session['name'] = emp_name
         session['username'] = username
         session['logged_in'] = True
+        main()
         return redirect('/home')
     else:
         return render_template('login.html',error='Invalid login credentials')
