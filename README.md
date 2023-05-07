@@ -93,6 +93,8 @@ The corresponding instructions for Testing our framework are [here][link_referen
 
 Flask - you can find out [here][link_reference_5]
 
+PowerBI - you can find out [here][link_reference_9]
+
 Project Proposal - you can find out [here][link_reference_6]
 
 Final Report - you can find out [here](link_reference_7)
@@ -109,3 +111,4 @@ If you face any problem while running this code, you can contact us at {sivakuma
 [link_reference_6]: https://github.com/sivakumarreddy07/Accolade/blob/main/Accolade_Proposal.pdf
 [link_reference_7]: https://github.com/sivakumarreddy07/Accolade/blob/main/Docs/Accolade_Report.pdf
 [link_reference_8]: https://github.com/sivakumarreddy07/Accolade/tree/main/application/tests
+[link_reference_9]: https://powerbi.microsoft.com/en-us/learning/
